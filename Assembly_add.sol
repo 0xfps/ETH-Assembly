@@ -219,4 +219,11 @@ contract Add
     }
 
     // ====== F U N C T I O N S   A N D   L O O P S ==============
+
+
+
+    function average(uint256 a, uint256 b) public pure returns (uint256) {
+        // (a + b) / 2 can overflow.
+        return (a & b) + (a ^ b) / 2;
+    }
 }
