@@ -11,6 +11,7 @@ pragma solidity ^0.8.0;
 * @notice:
 * This is a contract, for now.
 * It is finished (It does what it is meant to do), but not yet finished (It is not ready).
+* I do not think this contract is gas optimized too, yet.
 */
 
 contract ArraySorter
