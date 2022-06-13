@@ -5,13 +5,9 @@ pragma solidity ^0.8.0;
 * @title: Array Sorter Library.
 * @author: Anthony (fps) https://github.com/fps8k .
 * @dev:
-* This is a contract that serves 2 purposes.
-*
-*
-* @notice:
-* This is a contract, for now.
-* It is finished (It does what it is meant to do), but not yet finished (It is not ready).
-* I do not think this contract is gas optimized too, yet.
+* This library takes an array [unordered, mostly] as an argument.
+* It sorts the array in ascending or descending order, depending on the user's choice.
+* Then returns the new array created from the old array.
 */
 
 contract ArraySorter
