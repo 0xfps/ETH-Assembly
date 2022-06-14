@@ -149,7 +149,7 @@ library ArraySorter
     function sortDesc(uint256[] storage _array) internal returns(uint256[] memory)
     {
         // Makes sure that the length of the array is > 0.
-        require (_array.length > 0, "Cannot sort 0 length array!");
+        require (_array.length > 0, "0 Length Array!");
 
         // If array length > 1, it calls the sorting function.
         if (_array.length > 1)
