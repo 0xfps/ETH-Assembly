@@ -46,7 +46,6 @@ library ArraySorter
     }
 
 
-
     /*
     * @dev
     * [Ref line 31] :: Arranges the function from lowest to highest.
@@ -133,7 +132,6 @@ library ArraySorter
     }
 
 
-
     /*
     * @dev
     * Function sortDesc (Sort Descending).
@@ -161,7 +159,6 @@ library ArraySorter
         // If array length == 1, it should return the array and stop executing [There is nothing to sort].
         return _array;
     }
-
 
 
     /*
