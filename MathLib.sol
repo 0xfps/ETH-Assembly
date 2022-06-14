@@ -188,8 +188,6 @@ library ArraySorter
         * Where len is the length of the array we want to sort.
         * At the end of the loop, (when the length of the array to be sorted is == 1), the last element is pushed to the last index of the new array.
         * The new array is returned.
-        *
-        * :).
         */
 
         // Length of the array to be sorted.
