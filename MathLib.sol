@@ -8,6 +8,11 @@ pragma solidity ^0.8.0;
 * This library takes an array [unordered, mostly] as an argument.
 * It sorts the array in ascending or descending order, depending on the user's choice.
 * Then returns the new array created from the old array.
+*
+* [GAS USAGE]
+* This gas test was done with a constant unordered array of 8 elements.
+* Ascending: ~ 152696 gas.
+* Descending: ~ 125730 gas.
 */
 
 contract ArraySorter
@@ -21,23 +26,29 @@ contract ArraySorter
 
     /*
     * @dev
-    * Function sortAsc sort takes in an array of numbers and arranges them from lowest to highest.
+    * Function sortAsc (Sort Ascending).
+    * It takes in an array of numbers, runs some checks and passes it as an argumant to the function _sortAsc().
+    * The called function [_sortAsc()] arranges the array elements from lowest to highest.
+    * This returns the ordered array returned by the _sortAsc() function.
+    * This uses ~ 152696 gas.
     *
     * @param:
-    * uint256[] storage _array -> An array placed to memory.
+    * uint256[] _array -> Array to be sorted.
+    *
+    * @return
+    * uint256[] -> Array (memory) to be assigned to the desired storage array variable.
     */
-
     function sortAsc(uint256[] storage _array) internal returns(uint256[] memory)
     {
-        // Ensure the length of the array is > 0.
-        require (_array.length > 0, "Cannot sort 0 length array!");
+        // Makes sure that the length of the array is > 0.
+        require (_array.length > 0, "0 Length Array!");
 
-        // If array length == 1 it should return the array and stop executing.
+        // If array length > 1, it calls the sorting function.
         if (_array.length > 1)
-            // Return array.
+            // This function sorts the array and returns the ordered array.
             return _sortAsc(_array);
 
-        // If the array length is == 1.
+        // If array length == 1, it should return the array and stop executing [There is nothing to sort].
         return _array;
     }
 
@@ -213,6 +224,6 @@ contract ArraySorter
     // Test.
     function SORT() public
     {
-        testArray = sortDesc(testArray);
+        testArray = sortAsc(testArray);
     }
 }
