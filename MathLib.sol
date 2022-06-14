@@ -56,37 +56,52 @@ contract ArraySorter
 
     /*
     * @dev
-    * This handles the actual sorting.
+    * [Ref line 31] :: Arranges the function from lowest to highest.
+    *
+    * @param:
+    * uint256[] _array -> Array to be sorted, passed from sortAsc().
+    *
+    * @return
+    * uint256[] -> ordered arrray.
     */
     function _sortAsc(uint256[] storage _array) private returns(uint256[] memory)
     {
-        // In this function block, it is assumed that the length of the array is >= 2.
-
+        // In this function block, the length of the array is >= 2 [ref line 47].
         /*
         * @notice
-        * In this function the following procedures will be followed:
-        * 
+        * The first element of the array is taken and assigned to the min variable.
+        * The min variable is compared with each subsequent individual element in the array.
+        * If min is >= the element, the element becomes the new min variable value and the index of the element is recorded.
+        * At the end of the comparison, the min variable is recorded, and replaced by the last element, and the array is popped [_array.pop()].
+        * The current min value is ppushed to a new array which has already been created to memory.
+        * The length of the new array is such to ensure that:
+        *
+        * uint256[] memory new_array = new uint256[](len);
+        *
+        * Where len is the length of the array we want to sort.
+        * At the end of the loop, (when the length of the array to be sorted is == 1), the last element is pushed to the last index of the new array.
+        * The new array is returned.
         */
-        
-        
+
+        // Length of the array to be sorted.
         uint256 len = _array.length;
         // New array to be returned.
-        uint256[] memory newArray = new uint256[](len);
+        uint256[] memory new_array = new uint256[](len);
         // Index for the new array.
         uint256 index;
-        
+        // Loop until the length of the array to be sorted becomes 1.
         while (len > 0)
         {
-            // This holds the current minimum value in the array.
+            // This holds the current minimum value in the array; whenever the array is popped and the loop is to repeat.
             uint256 min = _array[0];
             // Counter that resets on each loop to hold the index of the current min value.
             uint256 counter = 0;   
             
-            // If the length of the array is now one, it should simply copy the only element to the newArray.
+            // If the length of the array is now one, it should simply copy the only element to the new array.
             if (len == 1)
             {
-                // Set the last index of the newArray to the only element in the current lone array.
-                newArray[index] = min;
+                // Set the last index of the new array to the only element in the current lone array.
+                new_array[index] = min;
             }
             else
             {
@@ -98,13 +113,13 @@ contract ArraySorter
                     {
                         // Reassign the minimum value.
                         min = _array[j];
-                        // Grab the index of the minimum value.
+                        // Grab the index of the current minimum value.
                         counter = j;
                     }
                 }
 
-                // Append the minimum value to the current index of the newArray.
-                newArray[index] = min;
+                // Append the minimum value to the current index of the new array.
+                new_array[index] = min;
                 // Replace the element at that index in the array that is being sorted with the last element.
                 // This will remove that element, because it has been recorded.
                 // This is done so that the length of the array will reduce.
@@ -120,8 +135,8 @@ contract ArraySorter
             len--;
         }
 
-        // Return the array formed.
-        return newArray;
+        // Return the new array formed.
+        return new_array;
     }
 
 
@@ -167,7 +182,7 @@ contract ArraySorter
         
         uint256 len = _array.length;
         // New array to be returned.
-        uint256[] memory newArray = new uint256[](len);
+        uint256[] memory new_array = new uint256[](len);
         // Index for the new array.
         uint256 index;
         
@@ -178,11 +193,11 @@ contract ArraySorter
             // Counter that resets on each loop to hold the index of the current min value.
             uint256 counter = 0;   
             
-            // If the length of the array is now one, it should simply copy the only element to the newArray.
+            // If the length of the array is now one, it should simply copy the only element to the new_array.
             if (len == 1)
             {
-                // Set the last index of the newArray to the only element in the current lone array.
-                newArray[index] = max;
+                // Set the last index of the new_array to the only element in the current lone array.
+                new_array[index] = max;
             }
             else
             {
@@ -199,8 +214,8 @@ contract ArraySorter
                     }
                 }
 
-                // Append the maximum value to the current index of the newArray.
-                newArray[index] = max;
+                // Append the maximum value to the current index of the new_array.
+                new_array[index] = max;
                 // Replace the element at that index in the array that is being sorted with the last element.
                 // This will remove that element, because it has been recorded.
                 // This is done so that the length of the array will reduce.
@@ -217,7 +232,7 @@ contract ArraySorter
         }
 
         // Return the array formed.
-        return newArray;
+        return new_array;
     }
 
 
