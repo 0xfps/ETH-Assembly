@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 * @title: Array Sorter Library.
 * @author: Anthony (fps) https://github.com/fps8k.
 * @dev:
-* This library takes an array [unordered, mostly] as an argument.
+* This library has two main functions that take an array [unordered, mostly] as an argument.
 * It sorts the array in ascending or descending order, depending on the user's choice.
 * Then returns the new array created from the old array.
 *
