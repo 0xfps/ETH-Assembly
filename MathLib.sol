@@ -48,7 +48,7 @@ library ArraySorter
 
     /*
     * @dev
-    * [Ref line 31] :: Arranges the function from lowest to highest.
+    * [Ref line 24] :: Arranges the function from lowest to highest.
     *
     * @param:
     * uint256[] _array -> Array to be sorted, passed from sortAsc().
@@ -58,7 +58,7 @@ library ArraySorter
     */
     function _sortAsc(uint256[] storage _array) private returns(uint256[] memory)
     {
-        // In this function block, the length of the array is >= 2 [ref line 47].
+        // In this function block, the length of the array is >= 2 [ref line 40].
         /*
         * @notice
         * The first element of the array is taken and assigned to the min variable.
@@ -163,7 +163,7 @@ library ArraySorter
 
     /*
     * @dev
-    * [Ref line 148] :: Arranges the function from highest to lowest.
+    * [Ref line 139] :: Arranges the function from highest to lowest.
     *
     * @param:
     * uint256[] _array -> Array to be sorted, passed from sortDesc().
@@ -173,7 +173,7 @@ library ArraySorter
     */
     function _sortDesc(uint256[] storage _array) private returns(uint256[] memory)
     {
-        // In this function block, the length of the array is >= 2 [ref line 164].
+        // In this function block, the length of the array is >= 2 [ref line 155].
         /*
         * @notice
         * The first element of the array is taken and assigned to the max variable.
