@@ -2,13 +2,12 @@
 pragma solidity >=0.6.0;
 
 /*
-* @title: 
+* @title: Assembly Addition.
 * @author: Anthony (fps) https://github.com/fps8k .
-* @dev: 
+* @dev: Addition.
 */
 
-contract Add
-{
+contract Add {
     // ================= A D D I T I O N ==========================
 
     /*
@@ -28,11 +27,13 @@ contract Add
     * 
     * uint256 _sum, this will be explicitly returned and can be used by the solidity code.
     */
-    function assemblyAdd(uint256 a, uint256 b) private pure returns(uint256 _sum)
+    function assemblyAdd(uint256 a, uint256 b) 
+    private 
+    pure 
+    returns(uint256 _sum) 
     {
         // Assembly block for addition
-        assembly
-        {
+        assembly {
             // Assign first number in the function to a variable.
             let _a := a
             // Assign second number in the function to a variable.
@@ -60,7 +61,10 @@ contract Add
     * 
     * uint256
     */
-    function performAddition(uint256 a, uint256 b) public pure returns(uint256)
+    function performAddition(uint256 a, uint256 b) 
+    public 
+    pure 
+    returns(uint256)
     {
         return assemblyAdd(a, b);
     }
@@ -89,18 +93,20 @@ contract Add
     * 
     * uint256 _diff, this will be explicitly returned and can be used by the solidity code.
     */
-    function assemblySub(uint256 a, uint256 b) private pure returns(uint256 _diff)
+    function assemblySub(uint256 a, uint256 b) 
+    private 
+    pure 
+    returns(uint256 _diff)
     {
         // Assembly block for addition
-        assembly
-        {
+        assembly {
             // Assign first number in the function to a variable.
             let _a := a
             // Assign second number in the function to a variable.
             let _b := b
+            
             // If the first number _a is greater than the second number _b
-            if gt(_a, _b)
-            {
+            if gt(_a, _b) {
                 // Perform the difference and return the variable.
                 _diff := sub(a,b)
             }
@@ -125,7 +131,10 @@ contract Add
     * 
     * uint256
     */
-    function performSubtraction(uint256 a, uint256 b) public pure returns(uint256)
+    function performSubtraction(uint256 a, uint256 b) 
+    public 
+    pure 
+    returns(uint256)
     {
         return assemblySub(a, b);
     }
@@ -152,11 +161,13 @@ contract Add
     * 
     * uint256 _prod, this will be explicitly returned and can be used by the solidity code.
     */
-    function assemblyProd(uint256 a, uint256 b) public pure returns(uint256 _prod)
+    function assemblyProd(uint256 a, uint256 b) 
+    public 
+    pure 
+    returns(uint256 _prod)
     {
         // Assembly block for addition
-        assembly
-        {
+        assembly {
             // Assign first number in the function to a variable.
             let _a := a
             // Assign second number in the function to a variable.
@@ -189,24 +200,25 @@ contract Add
     * 
     * uint256 _sum, this will be explicitly returned and can be used by the solidity code.
     */
-    function assemblyFunc(uint256 a, uint256 b) public pure returns(uint256 _cumul)
+    function assemblyFunc(uint256 a, uint256 b) 
+    public
+    pure 
+    returns(uint256 _cumul)
     {
         // Assembly block for addition
-        assembly
-        {
+        assembly {
             // Assign first value to first number.
             let _a := a
             // Assign second value to second number.
             let _b := b
 
             // Function addLoop adds the numbers starting from the first number all to the second, and return the total.
-            function addLoop(start, end) -> total
-            {
+            function addLoop(start, end) -> total {
                 // Initialize sum to 0.
                 let sum := 0
+                
                 // Loop from the first value to the last value.
-                for{let i := start} lt(i, add(end, 1)) {i := add(i, 1)}
-                {
+                for{let i := start} lt(i, add(end, 1)) {i := add(i, 1)} {
                     // Add the current value to the sum.
                     sum := add(sum, i)
                 }
@@ -222,7 +234,11 @@ contract Add
 
 
 
-    function average(uint256 a, uint256 b) public pure returns (uint256) {
+    function average(uint256 a, uint256 b) 
+    public 
+    pure 
+    returns (uint256) 
+    {
         // (a + b) / 2 can overflow.
         return (a & b) + (a ^ b) / 2;
     }
