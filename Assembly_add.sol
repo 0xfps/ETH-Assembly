@@ -3,13 +3,12 @@ pragma solidity >=0.6.0;
 
 /*
 * @title: Assembly Addition.
-* @author: Anthony (fps) https://github.com/fps8k .
+* @author: Anthony (fps) https://github.com/0xfps.
 * @dev: Addition.
 */
 
 contract Add {
     // ================= A D D I T I O N ==========================
-
     /*
     * @dev
     *
