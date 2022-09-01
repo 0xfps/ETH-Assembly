@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 /*
 * @title: Array Sorter Library.
-* @author: Anthony (fps) https://github.com/fps8k.
+* @author: Anthony (fps) https://github.com/0xfps.
 * @dev:
 * This library has two main functions that take an array [unordered, mostly] as an argument.
 * It sorts the array in ascending or descending order, depending on the user's choice.
@@ -15,8 +15,7 @@ pragma solidity ^0.8.0;
 * Descending: ~ 125730 gas.
 */
 
-library ArraySorter
-{
+library ArraySorter {
     /*
     * @dev
     * Function sortAsc (Sort Ascending).
@@ -31,15 +30,15 @@ library ArraySorter
     * @return
     * uint256[] -> Array (memory) to be assigned to the desired storage array variable.
     */
-    function sortAsc(uint256[] storage _array) internal returns(uint256[] memory)
-    {
+    function sortAsc(uint256[] storage _array) internal returns(uint256[] memory) {
         // Makes sure that the length of the array is > 0.
         require (_array.length > 0, "0 Length Array!");
 
         // If array length > 1, it calls the sorting function.
-        if (_array.length > 1)
+        if (_array.length > 1) {
             // This function sorts the array and returns the ordered array.
             return _sortAsc(_array);
+        }
 
         // If array length == 1, it should return the array and stop executing [There is nothing to sort].
         return _array;
@@ -56,8 +55,7 @@ library ArraySorter
     * @return
     * uint256[] -> ordered arrray.
     */
-    function _sortAsc(uint256[] storage _array) private returns(uint256[] memory)
-    {
+    function _sortAsc(uint256[] storage _array) private returns(uint256[] memory) {
         // In this function block, the length of the array is >= 2 [ref line 40].
         /*
         * @notice
@@ -82,27 +80,21 @@ library ArraySorter
         // Index for the new array.
         uint256 index;
         // Loop until the length of the array to be sorted becomes 1.
-        while (len > 0)
-        {
+        while (len > 0) {
             // This holds the current minimum value in the array; whenever the array is popped and the loop is to repeat.
             uint256 min = _array[0];
             // Counter that resets on each loop to hold the index of the current min value.
             uint256 counter = 0;   
             
             // If the length of the array is now one, it should simply copy the only element to the new array.
-            if (len == 1)
-            {
+            if (len == 1) {
                 // Set the last index of the new array to the only element in the current lone array.
                 new_array[index] = min;
-            }
-            else
-            {
+            } else {
                 // This should compare the current min value to all the elements in the array to ascertain the minimum value.
-                for (uint j = 1; j < len; j++)
-                {
+                for (uint j = 1; j < len; j++) {
                     // If the current minimum value is greater than any element in the array, then a new minimum value is found.
-                    if (min >= _array[j])
-                    {
+                    if (min >= _array[j]) {
                         // Reassign the minimum value.
                         min = _array[j];
                         // Grab the index of the current minimum value.
@@ -146,15 +138,15 @@ library ArraySorter
     * @return
     * uint256[] -> Array (memory) to be assigned to the desired storage array variable.
     */
-    function sortDesc(uint256[] storage _array) internal returns(uint256[] memory)
-    {
+    function sortDesc(uint256[] storage _array) internal returns(uint256[] memory) {
         // Makes sure that the length of the array is > 0.
         require (_array.length > 0, "0 Length Array!");
 
         // If array length > 1, it calls the sorting function.
-        if (_array.length > 1)
+        if (_array.length > 1) {
             // This function sorts the array and returns the ordered array.
             return _sortDesc(_array);
+        }
 
         // If array length == 1, it should return the array and stop executing [There is nothing to sort].
         return _array;
@@ -171,8 +163,7 @@ library ArraySorter
     * @return
     * uint256[] -> ordered arrray.
     */
-    function _sortDesc(uint256[] storage _array) private returns(uint256[] memory)
-    {
+    function _sortDesc(uint256[] storage _array) private returns(uint256[] memory) {
         // In this function block, the length of the array is >= 2 [ref line 155].
         /*
         * @notice
@@ -197,27 +188,21 @@ library ArraySorter
         // Index for the new array.
         uint256 index;
         // Loop until the length of the array to be sorted becomes 1.
-        while (len > 0)
-        {
+        while (len > 0) {
             // This holds the current maximum value in the array; whenever the array is popped and the loop is to repeat.
             uint256 max = _array[0];
             // Counter that resets on each loop to hold the index of the current max value.
             uint256 counter = 0;   
             
             // If the length of the array is now one, it should simply copy the only element to the new array.
-            if (len == 1)
-            {
+            if (len == 1) {
                 // Set the last index of the new array to the only element in the current lone array.
                 new_array[index] = max;
-            }
-            else
-            {
+            } else {
                 // This should compare the current max value to all the elements in the array to ascertain the maximum value.
-                for (uint j = 1; j < len; j++)
-                {
+                for (uint j = 1; j < len; j++) {
                     // If the current maximum value is greater than any element in the array, then a new maximum value is found.
-                    if (max <= _array[j])
-                    {
+                    if (max <= _array[j]) {
                         // Reassign the maximum value.
                         max = _array[j];
                         // Grab the index of the maximum value.
